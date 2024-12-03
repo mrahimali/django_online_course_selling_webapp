@@ -1,0 +1,13 @@
+{% extends "./base.html" %}
+{% load custom_tags %}
+{% block title %}SignUp{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="display-4">SignUp</h1>
+        <form action="/signup/" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Register">
+        </form>
+    </div>
+{% endblock %}

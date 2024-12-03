@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from courses.models import Course, Video
 
 def CourseDetail(request, slug):
@@ -11,7 +11,7 @@ def CourseDetail(request, slug):
     video= Video.objects.get(serial_number=serial_number, course=course)
 
     if (request.user.is_authenticated is False) and (video.is_preview is False):
-        return HttpResponse("Login Required!!!")
+        return redirect('login')
 
 
     context={
